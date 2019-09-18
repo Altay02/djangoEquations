@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['afternoon-forest-10311.herokuapp.com',
 		 '127.0.0.1',
-                 'www.equationgenerate.com']
+                 'www.equationgenerator.com']
 
 
 # Application definition
