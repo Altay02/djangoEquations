@@ -25,7 +25,9 @@ SECRET_KEY = 'p$&&a9cb@1am9_h+5zz$8!3u%(m#8z4bob9lsnzo(fqzgk-cv4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['afternoon-forest-10311.herokuapp.com']
+ALLOWED_HOSTS = ['afternoon-forest-10311.herokuapp.com',
+		 '127.0.0.1',
+                 'www.equationgenerate.com']
 
 
 # Application definition
