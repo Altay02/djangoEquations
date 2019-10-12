@@ -5,6 +5,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width">
 		<title>Math generator</title>
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'style.css' %}">
 		<style>
 			.rootcontainer{
 				display: none;
@@ -25,8 +27,6 @@
 			}
 
 		</style>
-		{% load static %}
-		<link rel="stylesheet" href="{% static 'style.css' %}">
 		<script type="text/javascript" async
 				src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
 		</script>
@@ -37,27 +37,29 @@
 	<body>
 		<div style="display: block;">
 			<nav role='navigation'>
-				<ul><li><a href="#">About</a>
+				<ul>
+				<li>
+					
+				</li>
+				<li><a href="#"><span class="ru">Меню</span><span class="eng">Menu</span></a>
 					<ul>
-						<li id='btnSquareEq'>Квадратное уравнение</li>
-						<li id='btnPolynomial3'>Возвратное ур 3 степени</li>
-						<li id='btnPolynomial4'>Возвратное ур 4 степени</li>
-						<li id='btnPhomogeneousSq'>Однородное ур > квадратное</li>
-						<li id='btnPhomogeneousPolynomial3'>Однородное ур > возвратное 3 степени</li>
-						<li id='btnMethodOfUndeterCoef'>Уравнение на метод неопределенных коэффициентов</li>
-						<li id='btnInequality'>Неравенство</li>
-						<li id='btnSumOf4Degrees'>Сумма 4 степеней</li>
-						<li id='btnСommon'>Обычное ур. (Безу)</li>
+						<li id='btnSquareEq'><span class="ru">Квадратное уравнение</span><span class="eng">Square equation</span></li>
+						<li id='btnPolynomial3'><span class="ru">Возвратное ур 3 степени</span><span class="eng">Polynomial equation 3 degree</span></li>
+						<li id='btnPolynomial4'><span class="ru">Возвратное ур 4 степени</span><span class="eng">Polynomial equation 4 degree</span></li>
+						<li id='btnPhomogeneousSq'><span class="ru">Однородное ур > квадратное</span><span class="eng">Phomogeneous</span></li>
+						<li id='btnPhomogeneousPolynomial3'><span class="ru">Однородное ур > возвратное 3 степени</span><span class="eng">Phomogeneous and Polynomial</span></li>
+						<li id='btnMethodOfUndeterCoef'><span class="ru">Уравнение на метод неопределенных коэффициентов</span><span class="eng">Method of undetermined coef</span></li>
+						<li id='btnInequality'><span class="ru">Неравенство</span><span class="eng">Inequality</span></li>
+						<li id='btnSumOf4Degrees'><span class="ru">Сумма 4 степеней</span><span class="eng">Sum 4 degrees</span></li>
+						<li id='btnСommon'><span class="ru">Обычное ур. (Безу)</span><span class="eng">usual eq</span></li>
 					</ul>
-					</li>
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Contact Us</a>
-
+				</li>
+				<li id="about"><a href="#"><span class="ru">О сайте</span><span class="eng">About</span></a></li>
 				</ul>
 			</nav>
 		</div>
 
-		<button id='btnGenerate'>Generate</button>
+		<button id='btnGenerate'><span>Generate</span></button>
 		
 		<!--<div id="mathtest" class="roojtcontainer">
 			<math id="math" xmlns="http://www.w3.org/1998/Math/MathML">
@@ -92,6 +94,11 @@
 		</div>-->
 
 		<!---------------------------------------------------------------------------------------------->
+		<input class="checkbox" id="checkbox1" type="checkbox"/>
+		<label for="checkbox1" class="checkbox-label">
+			<span class="on">ru/EN</span>
+			<span class="off">RU/en</span>
+		</label>
 		{% block content %}{% endblock %}
 		<div id="Common" class="rootcontainer">
 			<div class="container">
@@ -128,7 +135,7 @@
 					</mrow>
 				</math>
 			</div>
-			<p id="par1Common"></p>
+			<p><span class="ru">корни</span><span class="eng">roots</span>: <span id="par1Common"></span></p>
 		</div>
 
 		<div id="SumOf4Degrees" class="rootcontainer">
@@ -249,7 +256,7 @@
 					<mn id="d">d</mn>
 				</math>
 			</div>
-			<p id="par1SumOf4Degrees"></p>
+			<p><span class="ru">корни</span><span class="eng">roots</span>: <span id="par1SumOf4Degrees"></span></p>
 		</div>
 
 		<div id="Inequality" class="rootcontainer">
@@ -478,7 +485,7 @@
 					</mrow>
 				</math>
 			</div>
-			<p id="par1MethodOfUndeterCoef"></p>
+			<p><span class="ru">корни</span><span class="eng">roots</span>: <span id="par1MethodOfUndeterCoef"></span></p>
 		</div>
 
 		<div id="PhomogeneousPolynomial3" class="rootcontainer">
@@ -528,7 +535,7 @@
 					</mrow>
 				</math>
 			</div>
-			<p id="parPhomogeneousPolynomial3"></p>
+			<p><span class="ru">корни</span><span class="eng">roots</span>: <span id="parPhomogeneousPolynomial3"></span></p>
 		</div>
 
 		<!--ОднородноеКвадратное ур -->
@@ -563,7 +570,7 @@
 					</mrow>
 				</math>
 			</div>
-			<p id="parPhomogeneousSq"></p>
+			<p><span class="ru">корни</span><span class="eng">roots</span>: <span id="parPhomogeneousSq"></span></p>
 		</div>
 
 		<!--Возвратное ур 4 степени-->
@@ -612,7 +619,7 @@
 				</math>
 			</div>
 			<p id="par1Polynomial4"></p>
-			<p id="par2Polynomial4"></p>
+			<p><span class="ru">корни</span><span class="eng">roots</span>: <span id="par2Polynomial4"></span></p>
 		</div>
 
 		<!--Возвратное ур 3 степени-->
@@ -651,7 +658,7 @@
 					</mrow>
 				</math>
 			</div>
-			<p id="parPolynomial3"></p>
+			<p><span class="ru">корни</span><span class="eng">roots</span>: <span id="parPolynomial3"></span></p>
 		</div>
 
 		<!--Квадратное ур-->
@@ -680,7 +687,11 @@
 					</mrow>
 				</math>
 			</div>
-			<p id="parSquareEq"></p>
+			<p><span class="ru">корни</span><span class="eng">roots</span>: <span id="parSquareEq"></span></p>
+		</div>
+		
+		<div id="aboutDiv">
+			<p> Этот сайт был сделан, чтобы генерить уравнения. Автор - Алтай Бусурманкулов.</p>
 		</div>
 		{% load static %}
 		<script src="{% static 'main.js' %}"></script>

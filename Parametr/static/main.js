@@ -25,6 +25,13 @@ var inequality = document.getElementById("Inequality");
 var sumOf4Degrees = document.getElementById("SumOf4Degrees");
 var mathtest = document.getElementById("mathtest");
 var common = document.getElementById("Common");
+var about = document.getElementById("about");
+var aboutDiv = document.getElementById("aboutDiv");
+
+about.onclick = function () {
+	aboutDiv.style.display = "block";
+	switching();
+}
 
 // делаем кнопкам функционал переключения
 btnSquareEq.onclick = function () {
@@ -92,6 +99,7 @@ function switching() {
 	inequality.style.display = "none";
 	SumOf4Degrees.style.display = "none";
 	common.style.display = "none";
+	aboutDiv.style.display = "none";
 }
 
 //функция finalAnswers удаляет повторяющиеся элементы из массива, используется для массива корней
@@ -174,7 +182,7 @@ function commonGenerate() {
 	/*
 	par1.textContent = "ans= " + Equation1.x1 + ", " + Equation1.x2 + ", " + x3 + "; finalAns= " + ans;
 	*/
-	par1.textContent = "корни: " + ans;
+	par1.textContent = ans;
 }
 
 // генератор уравнений на сумму 4 степеней
@@ -229,7 +237,7 @@ function sumOf4DegreesGenerate() {
 	if (r - e === 0) {	simMinusMrowC.style.display = "none";}
 	simD.textContent = d;
 	
-	par.textContent = "корни: " + xs;
+	par.textContent = xs;
 }
 
 // генератор неравенств
@@ -592,7 +600,7 @@ function methodOfUndeterCoefGenerate() {
 	par1.textContent = "a=" + a + "b=" + b + "c=" + c + "d=" + d + "; корни алгоритма: " + x1 + " " + x2 + " " + x3 + " " + x4 + "; реальные корни: " + ans;
 	*/
 	// вывод корней в хтмл
-	par1.textContent = "корни: " + ans;
+	par1.textContent = ans;
 }
 
 // генератор однородных уравнений, переходящих в возвратные 
@@ -643,7 +651,7 @@ function phomogeneousPolynomial3Generate() {
 /* инфа для девелопинга
 	par.textContent = "a=" + signa.textContent + a.textContent + "; b=" + signb.textContent + b.textContent + "; x/y= " + xy1 + ", " + xy2 + ", " + xy3 + "; реальные корни: " + ans;
 	*/
-	par.textContent = "корни: " + ans;
+	par.textContent = ans;
 }
 
 // генератор однородных уравнений, переходящих в квадратные
@@ -701,7 +709,7 @@ function phomogeneousSqGenerate() {
 /* инфа для девелопинга
 	par1.textContent = " a=" + na + "; b=" + nb + "с="  + nc + "; корни алгоритма: " + xy1 + " " + xy2 + "; реальные корни: " + ans;
 	*/
-	par1.textContent = "корни: " + ans;
+	par1.textContent = ans;
 }
 
 // генератор возвратных уравнений 4 степени
@@ -793,7 +801,7 @@ function polynomial4Generate() {
 		par2.textContent = " a=" + signa.textContent + a.textContent + "; b=" + signb.textContent + b.textContent + "с="  + signc.textContent + c.textContent + "; корни алгоритма: " + x1 + " " + x2 + " " + x3 + " " + x4 + "; реальные корни: " + ans + " Y-ки: " + y1 + " " + y2;
 		*/
 		// вывод корней в штмл
-		par2.textContent = "корни: " + ans;
+		par2.textContent = ans;
 	}
 }
 
@@ -847,7 +855,7 @@ function polynomial3Generate() {
 	/* инфа для разработки
 	par.textContent = "a=" + signa.textContent + a.textContent + "; b=" + signb.textContent + b.textContent + "; корни алгоритма: " + x1 + " " + x2 + " " + x3 + "; реальные корни: " + ans;
 	*/
-	par.textContent = "корни: " + ans;
+	par.textContent = ans;
 }
 
 // генератор квадратных уравнений
@@ -906,12 +914,37 @@ function squareEqGenerate() {
 		c.textContent = '';
 		signc.textContent = '';
 	}*/
-	par.textContent = 'корни: ' + Equation1.x1 + ' ' + Equation1.x2;
+	par.textContent = Equation1.x1 + ' ' + Equation1.x2;
 
 }
 
 //*****************************************************************************************
 //*****************************************************************************************
+
+
+var navEng = document.getElementsByClassName("eng"),
+	navRu = document.getElementsByClassName("ru"),
+	langBtn = document.querySelector("#checkbox1");
+// устанавливаю нон в качестве значения свойства, т.к. браузер почему-то не считает свойство navEng[1] = нон, хотя я прописал это в св-вах
+navEng[1].style.display = "none";
+// меняет язык
+langBtn.onclick = function () {
+	if (navEng[1].style.display == "none") {
+		for(i = 0; i < navEng.length;i++) {
+			navEng[i].style.display = "inline";
+		}
+		for(i = 0; i < navRu.length;i++) {
+			navRu[i].style.display = "none";
+		}
+	} else {
+		for(i = 0; i < navEng.length;i++) {
+			navEng[i].style.display = "none";
+		}
+		for(i = 0; i < navRu.length;i++) {
+			navRu[i].style.display = "inline";
+		}
+	}
+};
 
 // функционал кнопки для генерации уравнения. Кнопка запускает соответствующюю генерацию в зависимости от флага
 btnGenerate.onclick = function () {
