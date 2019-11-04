@@ -43,7 +43,7 @@
 				</li>
 				<li><a href="#"><span class="ru">Меню</span><span class="eng">Menu</span></a>
 					<ul>
-						<li id='btnSquareEq'><span class="ru">Квадратное уравнение</span><span class="eng">Square equation</span></li>
+						<li id='btnSquareEq'><span class="ru">Квадратное уравнение</span><span class="eng">Quadratic equation</span></li>
 						<li id='btnPolynomial3'><span class="ru">Возвратное ур 3 степени</span><span class="eng">Polynomial equation 3 degree</span></li>
 						<li id='btnPolynomial4'><span class="ru">Возвратное ур 4 степени</span><span class="eng">Polynomial equation 4 degree</span></li>
 						<li id='btnPhomogeneousSq'><span class="ru">Однородное ур > квадратное</span><span class="eng">Phomogeneous</span></li>
@@ -100,6 +100,8 @@
 			<span class="off">RU/en</span>
 		</label>
 		{% block content %}{% endblock %}
+		
+		<!--Уравнение на т. Безу -->
 		<div id="Common" class="rootcontainer">
 			<div class="container">
 				<math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -137,7 +139,8 @@
 			</div>
 			<p><span class="ru">корни</span><span class="eng">roots</span>: <span id="par1Common"></span></p>
 		</div>
-
+		
+		<!--Сумма 4 степеней ур -->
 		<div id="SumOf4Degrees" class="rootcontainer">
 			<div id="Example">
 				<math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -258,8 +261,10 @@
 			</div>
 			<p><span class="ru">корни</span><span class="eng">roots</span>: <span id="par1SumOf4Degrees"></span></p>
 		</div>
-
+		
+		<!--Неравенство ур -->
 		<div id="Inequality" class="rootcontainer">
+			<span class="inequalityP">неравенства вида</span>
 			<div id="Equation" class="container">
 				<math xmlns="http://www.w3.org/1998/Math/MathML">
 					<mrow>
@@ -285,6 +290,7 @@
 					</mrow>
 				</math>
 			</div>
+			<span class="inequalityP">или дробные вида</span>
 			<div id="EquationsFraction" class="container">
 				<math xmlns="http://www.w3.org/1998/Math/MathML">
 					<mfrac>
@@ -443,7 +449,8 @@
 				</math>
 			</div>
 		</div>
-
+		
+		<!--ОднородноеВозвратное ур 4 степени -->
 		<div id="MethodOfUndeterCoef" class="rootcontainer">
 			<div class="container">
 				<math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -487,7 +494,8 @@
 			</div>
 			<p><span class="ru">корни</span><span class="eng">roots</span>: <span id="par1MethodOfUndeterCoef"></span></p>
 		</div>
-
+		
+		<!--ОднородноеВозвратное ур 3 степени -->
 		<div id="PhomogeneousPolynomial3" class="rootcontainer">
 			<div class="container">
 				<math xmlns="http://www.w3.org/1998/Math/MathML">
@@ -690,8 +698,8 @@
 			<p><span class="ru">корни</span><span class="eng">roots</span>: <span id="parSquareEq"></span></p>
 		</div>
 		
-		<div id="aboutDiv">
-			<p> Этот сайт был сделан, чтобы генерить уравнения. Автор - Алтай Бусурманкулов.</p>
+		<div id="aboutDiv" class="rootcontainer">
+			<span class="ru">Этот сайт был сделан, чтобы генерить уравнения. Автор - Алтай Бусурманкулов.</span><span class="eng">This site was made to generate equation. Author is Altai Busurmankulov.</span>
 		</div>
 		{% load static %}
 		<script src="{% static 'main.js' %}"></script>

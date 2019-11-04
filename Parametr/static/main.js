@@ -28,12 +28,13 @@ var common = document.getElementById("Common");
 var about = document.getElementById("about");
 var aboutDiv = document.getElementById("aboutDiv");
 
+//переключение на дивку "о сайте"
 about.onclick = function () {
-	aboutDiv.style.display = "block";
 	switching();
+	aboutDiv.style.display = "block";
 }
 
-// делаем кнопкам функционал переключения
+// делаем кнопкам меню функционал переключения
 btnSquareEq.onclick = function () {
 	switching();
 	squareEq.style.display = "block";
@@ -159,7 +160,7 @@ function commonGenerate() {
 	mrowb.style.display = "inline-block";
 	mrowc.style.display = "inline-block";
 	// начало генерации
-	var Equation1 = new SquareEqObject(false, 4, 1),
+	var Equation1 = new SquareEqObject(false, 4, 2),
 		x3 = Math.ceil(Math.random() * 4);// this is d
 	// вывод в html
 	// вывод а
@@ -242,6 +243,10 @@ function sumOf4DegreesGenerate() {
 
 // генератор неравенств
 function inequalityGenerate() {
+	// прячу текст
+	var inequalityP = inequality.getElementsByClassName("inequalityP");
+	inequalityP[0].style.display = "none";
+	inequalityP[1].style.display = "none";
 	// генерация рандомного знака неравенства
 	var equation = inequality.querySelector("#Equation"),
 		equationsFraction = inequality.querySelector("#EquationsFraction"),
@@ -726,29 +731,31 @@ function polynomial4Generate() {
 		signb2 = polynomial4.querySelector("#signb2"),
 		b2 = polynomial4.querySelector("#b2"),
 		signc = polynomial4.querySelector("#signс"),
-		c = polynomial4.querySelector("#c"),
+		c = polynomial4.querySelector("#c");
 		// начало генерации
-		x1 = ranNum(),
-		x2 = 1 / x1,
-		x3 = ranNum(),
-		x4 = 1 / x3;
-	// расчет игриков
-	if (Math.random() < 0.3) {
-		x1 = "DNE";
-		x2 = "DNE";
-		var y1 = Math.floor(Math.random() * 7 - 3) / 2,
-			y2 = (x3 * x3 + 1) / x3;
-	} else {
-		var y1 = (x1 * x1 + 1) / x1,
-			y2 = (x3 * x3 + 1) / x3;
-	}
-	// расчет коэффициентов уравнения
-	var nb = -(y1 + y2),
-		nc = y1 * y2 + 2;
+	do {
+		var x1 = ranNum(),
+			x2 = 1 / x1,
+			x3 = ranNum(),
+			x4 = 1 / x3;
+		// расчет игриков
+		if (Math.random() < 0.3) {
+			x1 = "DNE";
+			x2 = "DNE";
+			var y1 = Math.floor(Math.random() * 7 - 3) / 2,
+				y2 = (x3 * x3 + 1) / x3;
+		} else {
+			var y1 = (x1 * x1 + 1) / x1,
+				y2 = (x3 * x3 + 1) / x3;
+		}
+		// расчет коэффициентов уравнения
+		var nb = -(y1 + y2),
+			nc = y1 * y2 + 2;
+	} while(amountOfNumerals(nb) > 5 || amountOfNumerals(nc) > 5 || nb === 0);
 /* проверка на адекватность коэффициентов(for developing)
 	par1.textContent = "nb=" + nb + "; nc=" + nc + "; ";
 	*/
-	if (amountOfNumerals(nb) > 5 || amountOfNumerals(nc) > 5 || nb === 0) {
+	if (amountOfNumerals(nb) > 5 || amountOfNumerals(nc) > 5 || nb === 0) {//неактуально, если сделал дууайл
 		par2.textContent = " error. numbers are too large or b = 0)";
 	} else {
 		var	nab = 1,
@@ -796,7 +803,17 @@ function polynomial4Generate() {
 		signc.textContent = (nc > 0 ? "+" : "-");
 		c.textContent = Math.abs(nc);
 // обработка и вывод ответов
+		// оформляем ответы, убирая мусор
 		var ans = finalAnswers([x1, x2, x3, x4]);
+		if (x1 === "DNE") {
+			ans = finalAnswers([x2, x3, x4]);
+		}
+		if (x2 === "DNE") {
+			ans = finalAnswers([x1, x3, x4]);
+		}
+		if (x1 === "DNE" && x2 === "DNE") {
+			ans = finalAnswers([x3, x4]);
+		}
 /* info for developing
 		par2.textContent = " a=" + signa.textContent + a.textContent + "; b=" + signb.textContent + b.textContent + "с="  + signc.textContent + c.textContent + "; корни алгоритма: " + x1 + " " + x2 + " " + x3 + " " + x4 + "; реальные корни: " + ans + " Y-ки: " + y1 + " " + y2;
 		*/
@@ -976,8 +993,10 @@ btnGenerate.onclick = function () {
 		case "Common":
 			commonGenerate();
 			break;
-		case "":
-			testGenerate();
+		case "":// по умолчанию генерим квадратное ур.
+			flag = "SquareEq";
+			squareEq.style.display = "block";
+			squareEqGenerate();
 			break;
 
 	}
