@@ -4,7 +4,7 @@ gunicorn==19.9.0
 mpmath==1.1.0
 pytz==2019.2
 simpy==3.0.11
-sqlparse==0.3.0
+sqlparse==0.4.4
 sympy==1.4
 virtualenv==16.7.4
 virtualenvwrapper-win==1.2.5
